@@ -42,8 +42,8 @@ jobs:
 
       - name: setup local env
         run: |
-          \cp -Rv main/telegraf/config.json secondary/telegraf/config.json
-          \cp -Rv main/README.md secondary/telegraf/README.md
+          \cp -Rv main/etesync/config.json secondary/etesync/config.json
+          \cp -Rv main/README.md secondary/etesync/README.md
           cd secondary
           git config --local user.email "robe_dunne@hotmail.com"
           git config --local user.name "sabuto"
