@@ -1,6 +1,8 @@
 name: if release
 
-on: release
+on:
+  push:
+    branches: [master]
       
 jobs:
   build:

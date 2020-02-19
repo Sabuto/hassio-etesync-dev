@@ -23,17 +23,17 @@ RUN set -e && \
     mkdir -p $STATIC_DIR && \
     tar x -v -z -f $BASE_DIR/master.tar.gz -C /tmp --exclude */example-configs --exclude */.git && \
     mv /tmp/server-master/* $BASE_DIR/ && \
+    # hadolint ignore=DL3008
     apk add --no-cache libressl && \
+    # hadolint ignore=DL3008
     apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev && \
     pip install -r $BASE_DIR/requirements.txt uwsgi && \
-    apk-del .build-deps && \
+    apk del .build-deps && \
     $BASE_DIR/manage.py collectstatic && \
     rm $BASE_DIR/master.tar.gz $BASE_DIR/requirements.txt $SECRET_FILE && \
     rm -r /tmp/server-master
 
 COPY run.sh /
 RUN chmod a+x /run.sh
-COPY telegraf.conf /etc/telegraf/
-RUN chmod a+x /etc/telegraf/telegraf.conf
 
 CMD [ "/run.sh" ]
