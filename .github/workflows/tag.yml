@@ -38,7 +38,7 @@ jobs:
           persist-credentials: false
           fetch-depth: 0
           path: secondary
-          repository: sabuto/hassio-repo
+          repository: sabuto/hassio-repo-dev
 
       - name: setup local env
         run: |
