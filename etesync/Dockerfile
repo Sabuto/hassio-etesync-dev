@@ -18,11 +18,11 @@ WORKDIR $BASE_DIR
 
 ADD https://github.com/etesync/server/archive/master.tar.gz $BASE_DIR
 
-# hadolint ignore=SC2035
 RUN set -e
 RUN mkdir -p $BASE_DIR
 RUN mkdir -p $DATA_DIR
 RUN mkdir -p $STATIC_DIR
+# hadolint ignore=SC2035
 RUN tar x -v -z -f $BASE_DIR/master.tar.gz -C /tmp --exclude */example-configs --exclude */.git
 RUN mv /tmp/server-master/* $BASE_DIR/
     # hadolint ignore=DL3018
