@@ -23,11 +23,11 @@ RUN set -e && \
     mkdir -p $DATA_DIR && \
     mkdir -p $STATIC_DIR && \
     tar x -v -z -f $BASE_DIR/master.tar.gz -C /tmp --exclude */example-configs --exclude */.git && \
-    mv /tmp/server-master/* $BASE_DIR/ && \
+    mv /tmp/server-master/* $BASE_DIR/
     # hadolint ignore=DL3018
-    apk add --no-cache libressl && \
+RUN apk add --no-cache libressl
     # hadolint ignore=DL3018
-    apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev && \
+RUN apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev && \
     pip install -r $BASE_DIR/requirements.txt uwsgi && \
     apk del .build-deps && \
     $BASE_DIR/manage.py collectstatic && \
