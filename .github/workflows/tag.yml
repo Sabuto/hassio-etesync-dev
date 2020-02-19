@@ -55,5 +55,5 @@ jobs:
         uses: ad-m/github-push-action@master
         with:
           github_token: ${{ secrets.GITHUB_PSA }}
-          repository: sabuto/hassio-repo
+          repository: sabuto/hassio-repo-dev
           directory: secondary
