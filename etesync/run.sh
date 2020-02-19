@@ -13,7 +13,7 @@ if ! bashio::fs.file_exists "${DB_PATH}}"; then
   bashio::log.info 'First Run, Setting up DB'
   "$BASE_DIR"/manage.py migrate
 
-  if [ "$SUPER_USER" -a "$SUPER_PASS" ]; then
+  if [ "$SUPER_USER" ] && [ "$SUPER_PASS" ]; then
       bashio::log.info 'Creating Super User'
       echo "from django.contrib.auth.models import User; User.objects.create_superuser('$SUPER_USER' , '$SUPER_EMAIL', '$SUPER_PASS')" | python manage.py shell
   fi
