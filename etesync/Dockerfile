@@ -19,21 +19,21 @@ WORKDIR $BASE_DIR
 ADD https://github.com/etesync/server/archive/master.tar.gz $BASE_DIR
 
 # hadolint ignore=SC2035
-RUN set -e && \
-    mkdir -p $BASE_DIR && \
-    mkdir -p $DATA_DIR && \
-    mkdir -p $STATIC_DIR && \
-    tar x -v -z -f $BASE_DIR/master.tar.gz -C /tmp --exclude */example-configs --exclude */.git && \
-    mv /tmp/server-master/* $BASE_DIR/
+RUN set -e
+RUN mkdir -p $BASE_DIR
+RUN mkdir -p $DATA_DIR
+RUN mkdir -p $STATIC_DIR
+RUN tar x -v -z -f $BASE_DIR/master.tar.gz -C /tmp --exclude */example-configs --exclude */.git
+RUN mv /tmp/server-master/* $BASE_DIR/
     # hadolint ignore=DL3018
 RUN apk add --no-cache libressl
     # hadolint ignore=DL3018
-RUN apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev && \
-    pip install -r $BASE_DIR/requirements.txt uwsgi && \
-    apk del .build-deps && \
-    $BASE_DIR/manage.py collectstatic && \
-    rm $BASE_DIR/master.tar.gz $BASE_DIR/requirements.txt $SECRET_FILE && \
-    rm -r /tmp/server-master/*
+RUN apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev
+RUN pip install -r $BASE_DIR/requirements.txt uwsgi
+RUN apk del .build-deps
+RUN $BASE_DIR/manage.py collectstatic
+RUN rm $BASE_DIR/master.tar.gz $BASE_DIR/requirements.txt $SECRET_FILE
+RUN rm -r /tmp/server-master/*
 
 COPY run.sh /
 RUN chmod a+x /run.sh
