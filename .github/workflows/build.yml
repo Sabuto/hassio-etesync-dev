@@ -1,0 +1,20 @@
+name: Docker build and shellcheck
+
+on: 
+  push:
+    branches-ignore: [release]
+  pull_request:
+    branches-ignore: [release]
+
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - name: shellcheck
+        run: shellcheck etesync/run.sh
+      - name: build docker files
+        run: docker run --rm --privileged	-v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t etesync	--all	--test
