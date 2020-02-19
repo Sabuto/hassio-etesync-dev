@@ -28,7 +28,7 @@ RUN mv /tmp/server-master/* $BASE_DIR/
     # hadolint ignore=DL3018
 RUN apk add --no-cache libressl
     # hadolint ignore=DL3018
-RUN apk add --no-cache --virtual .buil-deps coreutils gcc make linux-headers libc-dev libressl-dev
+RUN apk add --no-cache --virtual .build-deps coreutils gcc make linux-headers libc-dev libressl-dev
 RUN pip install -r $BASE_DIR/requirements.txt uwsgi
 RUN apk del .build-deps
 RUN $BASE_DIR/manage.py collectstatic
