@@ -13,7 +13,7 @@ jobs:
       - name: shellcheck
         run: shellcheck etesync/run.sh
       - name: hadolint
-        run: docker run -rm -i hadolint\hadolint < etesync/Dockerfile
+        run: docker run --rm -i hadolint\hadolint < etesync/Dockerfile
       - name: build docker files
         run: docker run --rm --privileged	-v /var/run/docker.sock:/var/run/docker.sock -v ~/.docker:/root/.docker -v "$(pwd)":/data homeassistant/amd64-builder	-t telegraf	--all	--test
       - name: deploy docker files
