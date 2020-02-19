@@ -1,10 +1,6 @@
 name: if release
 
-on:
-  push:
-    branches: [master]
-    tags:
-      - 0.*
+on: release
       
 jobs:
   build:
