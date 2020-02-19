@@ -33,7 +33,7 @@ RUN pip install -r $BASE_DIR/requirements.txt uwsgi
 RUN apk del .build-deps
 RUN $BASE_DIR/manage.py collectstatic
 RUN rm $BASE_DIR/master.tar.gz $BASE_DIR/requirements.txt
-RUN rm -r /tmp/server-master/*
+RUN rm -r /tmp/server-master
 
 COPY run.sh /
 RUN chmod a+x /run.sh
