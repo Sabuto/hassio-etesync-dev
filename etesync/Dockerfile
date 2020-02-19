@@ -18,6 +18,7 @@ WORKDIR $BASE_DIR
 
 ADD https://github.com/etesync/server/archive/master.tar.gz $BASE_DIR
 
+# hadolint ignore=SC2035
 RUN set -e && \
     mkdir -p $BASE_DIR && \
     mkdir -p $DATA_DIR && \
