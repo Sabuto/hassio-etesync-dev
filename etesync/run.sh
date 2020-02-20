@@ -29,4 +29,4 @@ uWSGI='/usr/local/bin/uwsgi --ini etesync.ini'
 
 bashio::log.info "Starting Etesync"
 
-"${uWSGI}":uwsgi
+"$BASE_DIR/manage.py" runserver 0.0.0.0:8564
