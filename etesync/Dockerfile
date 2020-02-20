@@ -11,7 +11,6 @@ ENV DATA_DIR /share
 ENV STATIC_DIR /var/www/etesync
 
 ENV SECRET_FILE $DATA_DIR/secret.txt
-ENV ETESYNC_DB_PATH $DATA_DIR/db.sqlite3
 ENV SERVER="http"
 
 WORKDIR $BASE_DIR
