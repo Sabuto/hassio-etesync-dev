@@ -36,9 +36,7 @@ RUN rm -r /tmp/server-master
 
 COPY run.sh /
 RUN chmod a+x /run.sh
-COPY etesync.ini /
-RUN chmod a+x /etesync.ini
-COPY etesync_site_settings.py /
-RUN chmod a+x /etesync_site_settings.py
+COPY etesync-server.ini /etesync
+RUN chmod a+x /etesync-server.ini
 
 CMD [ "/run.sh" ]
