@@ -2,7 +2,7 @@ import os
 
 BASE_DIR = os.environ.get('BASE_DIR', '/etesync')
 
-DEBUG = bool(os.environ.get('TRUE', False))
+DEBUG = bool(os.environ.get('DEBUG', True))
 
 ALLOWED_HOSTS = os.environ.get('DJANGO_HOSTS','*').split(',')
 
