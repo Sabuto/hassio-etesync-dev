@@ -11,7 +11,7 @@ SUPER_EMAIL=$(bashio::config 'super_email')
 
 bashio::log.info "Setting up etesync"
 
-if ! bashio::fs.file_exists "${DB_PATH}}"; then
+if ! bashio::fs.file_exists "${DB_PATH}"; then
   bashio::log.info "First Run, Setting up DB"
   "$BASE_DIR"/manage.py migrate
 
