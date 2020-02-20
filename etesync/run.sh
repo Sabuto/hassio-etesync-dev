@@ -19,7 +19,7 @@ if ! bashio::fs.file_exists "${DB_PATH}"; then
   echo "from django.contrib.auth.models import User; User.objects.create_superuser('$SUPER_USER' , '$SUPER_EMAIL', '$SUPER_PASS')" | python manage.py shell
 fi
 
-if ! bashio::fs.directory_exists '"${STATIC_DIR}"/static/admin'; then
+if [ ! -e "$STATIC_DIR/static/admin" ] || [ ! -e "$STATIC_DIR/static/rest_framework" ]; then
   bashio::log.info "Static files are missing, lets do something about that...."
   mkdir -p "$STATIC_DIR/static"
   "$BASE_DIR"/manage.py collectstatic
