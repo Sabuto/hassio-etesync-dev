@@ -25,8 +25,6 @@ if [ ! -e "/etesync/static/admin" ] || [ ! -e "/etesync/static/rest_framework" ]
   "$BASE_DIR"/manage.py collectstatic
 fi
 
-uWSGI='/usr/local/bin/uwsgi --ini etesync.ini'
-
 bashio::log.info "Starting Etesync"
 
 "$BASE_DIR/manage.py" runserver 0.0.0.0:8564
